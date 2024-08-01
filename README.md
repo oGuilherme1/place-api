@@ -7,7 +7,7 @@ This repository contains a Laravel application
 **To install the application on your machine, follow the steps below:**
 
 ```bash
-git clone https://github.com/oGuilherme1/place-api/tree/master
+git clone https://github.com/oGuilherme1/place-api.git
 ```
 
 ```bash
