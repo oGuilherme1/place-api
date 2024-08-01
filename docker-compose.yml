@@ -1,0 +1,34 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:latest
+    container_name: postgres_SGBr
+    environment:
+      POSTGRES_USER: ${DB_USERNAME}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_DATABASE}
+    ports:
+      - "5432:5432"
+    networks:
+      - betabit
+
+  laravel_container:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: laravel_SGBr
+    environment:
+      - DB_HOST=postgres_SGBr 
+    ports:
+      - "8000:8000"
+    networks:
+      - betabit
+    depends_on:
+      - postgres
+    volumes:
+      - ./:/app
+    working_dir: /app
+
+networks:
+  betabit:
